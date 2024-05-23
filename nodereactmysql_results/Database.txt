@@ -1,0 +1,41 @@
+Tables:
+  student : {
+    student_id: int primary_key,
+    student_name: varchar(255),
+  }
+
+  mse_marks : {
+    id: primary_key,
+    student_id: int foreign_key => student.student_id,
+    subject_1_marks_received: int,
+    subject_1_marks_max: int,
+    subject_2_marks_received: int,
+    subject_2_marks_max: int,
+    subject_3_marks_received: int,
+    subject_3_marks_max: int,
+    subject_4_marks_received: int,
+    subject_4_marks_max: int,
+  }
+  ese_marks : {
+    id: primary_key,
+    student_id: int foreign_key => student.student_id,
+    subject_1_marks_received: int,
+    subject_1_marks_max: int,
+    subject_2_marks_received: int,
+    subject_2_marks_max: int,
+    subject_3_marks_received: int,
+    subject_3_marks_max: int,
+    subject_4_marks_received: int,
+    subject_4_marks_max: int,
+  }
+
+
+CREATE TABLE `result_website`.`student` ( `student_id` INT NOT NULL AUTO_INCREMENT , `student_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`student_id`)) ENGINE = InnoDB;
+
+CREATE TABLE `result_website`.`mse_marks` ( `marks_id` INT NOT NULL AUTO_INCREMENT , `student_id` INT NOT NULL , `subject_1_marks_received` INT NULL , `subject_1_marks_max` INT NOT NULL , `subject_2_marks_received` INT NULL , `subject_2_marks_max` INT NOT NULL , `subject_3_marks_received` INT NULL , `subject_3_marks_max` INT NOT NULL , `subject_4_marks_received` INT NULL , `subject_4_marks_max` INT NOT NULL , PRIMARY KEY (`marks_id`), UNIQUE (`student_id`)) ENGINE = InnoDB;
+
+CREATE TABLE `result_website`.`ese_marks` ( `marks_id` INT NOT NULL AUTO_INCREMENT , `student_id` INT NOT NULL , `subject_1_marks_received` INT NULL , `subject_1_marks_max` INT NOT NULL , `subject_2_marks_received` INT NULL , `subject_2_marks_max` INT NOT NULL , `subject_3_marks_received` INT NULL , `subject_3_marks_max` INT NOT NULL , `subject_4_marks_received` INT NULL , `subject_4_marks_max` INT NOT NULL , PRIMARY KEY (`marks_id`), UNIQUE `student_id` (`student_id`)) ENGINE = InnoDB;
+
+
+ALTER TABLE mse_marks ADD FOREIGN KEY (student_id) REFERENCES student(student_id);
+ALTER TABLE ese_marks ADD FOREIGN KEY (student_id) REFERENCES student(student_id);

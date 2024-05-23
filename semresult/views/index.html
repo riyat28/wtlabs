@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Semester Result Using Node amd MySQL</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <style>
+            body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 8px;
+        }
+
+        .sem {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .submit {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #28a745;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="sem">Semester Result</h2>
+            <form action="/calculate" method="post">
+                <div class="form-group">
+                    <label for="cnmidsem" class="form-label">Enter Marks for CN Midsem</label>
+                    <input type="number" name="cnmidsem" class="form-control" id="cnmidsem"></input>
+                </div>
+                <div class="form-group">
+                    <label for="wtmidsem" class="form-label">Enter Marks for WT Midsem</label>
+                    <input type="number" name="wtmidsem" class="form-control" id="wtmidsem"></input>
+                </div>
+                <div class="form-group">
+                    <label for="daamidsem" class="form-label">Enter Marks for DAA Midsem</label>
+                    <input type="number" name="daamidsem" class="form-control" id="daamidsem"></input>
+                </div>
+                <div class="form-group">
+                    <label for="sdmmidsem" class="form-label">Enter Marks for SDM Midsem</label>
+                    <input type="number" name="sdmmidsem" class="form-control" id="sdmmidsem"></input>
+                </div>
+                <div class="form-group">
+                    <label for="edimidsem" class="form-label">Enter Marks for EDI Midsem</label>
+                    <input type="number" name="edimidsem" class="form-control" id="edimidsem"></input>
+                </div>
+                <div class="form-group">
+                    <label for="cnendsem" class="form-label">Enter Marks for CN Endsem</label>
+                    <input type="number" name="cnendsem" class="form-control" id="cnendsem"></input>
+                </div>
+                <div class="form-group">
+                    <label for="wtendsem" class="form-label">Enter Marks for WT Endsem</label>
+                    <input type="number" name="wtendsem" class="form-control" id="wtendsem"></input>
+                </div>
+                <div class="form-group">
+                    <label for="daaendsem" class="form-label">Enter Marks for DAA Endsem</label>
+                    <input type="number" name="daaendsem" class="form-control" id="daaendsem"></input>
+                </div>
+                <div class="form-group">
+                    <label for="sdmendsem" class="form-label">Enter Marks for SDM Endsem</label>
+                    <input type="number" name="sdmendsem" class="form-control" id="sdmendsem"></input>
+                </div>
+                <div class="form-group">
+                    <label for="ediendsem" class="form-label">Enter Marks for EDI Endsem</label>
+                    <input type="number" name="ediendsem" class="form-control" id="ediendsem"></input>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="submit">Calculate</button>
+                </div>
+                <div class="result" id="result" name="result"></div>
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="/public/script.js"></script>
+    </body>
+</html>

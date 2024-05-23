@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Array Manipulation</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h2>Array Manipulation</h2>
+
+<!-- Search input -->
+<input type="text" id="searchInput" placeholder="Search">
+
+<!-- Sort buttons -->
+<button id="sortByTitle">Sort by Title</button>
+<button id="sortByPrice">Sort by Price</button>
+
+<!-- Display area for array elements -->
+<div id="displayArea"></div>
+
+<script>
+$(document).ready(function() {
+    // Sample array of elements
+    let elements = [
+        { id: 1, title: "Book A", price: 15 },
+        { id: 2, title: "Book B", price: 20 },
+        { id: 3, title: "Book C", price: 10 },
+        { id: 4, title: "Book D", price: 25 }
+    ];
+
+    // Function to display array elements
+    function displayElements(arr) {
+        $('#displayArea').empty();
+        arr.forEach(function(element) {
+            $('#displayArea').append(`<div>ID: ${element.id}, Title: ${element.title}, Price: ${element.price}</div>`);
+        });
+    }
+
+    // Initial display of elements
+    displayElements(elements);
+
+    // Search functionality
+    $('#searchInput').on('input', function() {
+        let searchText = $(this).val().toLowerCase();
+        let filteredElements = elements.filter(function(element) {
+            return element.title.toLowerCase().includes(searchText);
+        });
+        displayElements(filteredElements);
+    });
+
+    // Sorting functionality
+    $('#sortByTitle').click(function() {
+        elements.sort(function(a, b) {
+            return a.title.localeCompare(b.title);
+        });
+        displayElements(elements);
+    });
+
+    $('#sortByPrice').click(function() {
+        elements.sort(function(a, b) {
+            return a.price - b.price;
+        });
+        displayElements(elements);
+    });
+});
+</script>
+
+</body>
+</html>

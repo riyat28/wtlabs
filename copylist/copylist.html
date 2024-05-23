@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy List Items</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .list-container {
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+        }
+        li {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="list-container">
+        <div>
+            <h3>List 1</h3>
+            <ul id="list1">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </div>
+        <div>
+            <h3>List 2</h3>
+            <ul id="list2">
+                <!-- Items will be copied here -->
+            </ul>
+        </div>
+    </div>
+    <button id="copyButton">Copy Items to List 2</button>
+</body>
+</html>
+<script>
+$(document).ready(function() {
+    $('#copyButton').click(function() {
+        // Copy items from list1 to list2
+        $('#list1 li').each(function() {
+            var itemText = $(this).text();
+            $('#list2').append('<li>' + itemText + '</li>');
+        });
+    });
+});
+
+</script>
