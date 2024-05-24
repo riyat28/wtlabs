@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Chessboard</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        #chessboard-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25vmin; /* Use viewport minimum to keep it square */
+            height: 25vmin; /* Use viewport minimum to keep it square */
+        }
+
+        #chessboard {
+            display: grid;
+            width: 100%; /* Full width of the container */
+            height: 100%; /* Full height of the container */
+            border: 2px solid #000;
+            box-sizing: border-box;
+        }
+
+        .square {
+            width: 100%;
+            height: 100%;
+        }
+
+        .black {
+            background-color: #000;
+        }
+
+        .white {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="chessboard-container">
+        <div id="chessboard"></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const chessboard = document.getElementById('chessboard');
+
+            function createChessboard(size) {
+                chessboard.innerHTML = ''; // Clear the chessboard
+                chessboard.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+                chessboard.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+                for (let row = 0; row < size; row++) {
+                    for (let col = 0; col < size; col++) {
+                        const square = document.createElement('div');
+                        square.classList.add('square');
+                        if ((row + col) % 2 === 0) {
+                            square.classList.add('white');
+                        } else {
+                            square.classList.add('black');
+                        }
+                        chessboard.appendChild(square);
+                    }
+                }
+            }
+
+            // Create an 8x8 chessboard
+            createChessboard(8);
+
+            // Handle resize to keep the chessboard square
+            window.addEventListener('resize', () => {
+                const container = document.getElementById('chessboard-container');
+                const size = Math.min(container.clientWidth, container.clientHeight);
+                chessboard.style.width = `${size}px`;
+                chessboard.style.height = `${size}px`;
+            });
+        });
+    </script>
+</body>
+</html>
